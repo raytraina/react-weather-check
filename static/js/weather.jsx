@@ -68,8 +68,8 @@ class GetWeatherForm extends React.Component {
         <div>
           <div id="weatherForm">
             <form onSubmit={this.getWeather}>
-              <input type="text" value={this.state.value} onChange={this.handleChange} name="location-name" />
-              <input type="submit" value="Tell me now!" />
+              <input id="inputLocation" type="text" value={this.state.value} onChange={this.handleChange} name="location-name" />
+              <input id="submitLocation" type="submit" value="Tell me now!" />
             </form>
           </div>
           <div id="resultsDiv" hidden></div>

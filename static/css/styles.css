@@ -1,0 +1,26 @@
+
+body {
+    background-color:rgba(21, 62, 97, 1);
+    text-align: center;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+}
+h1, h2 {
+    color:#FB8B72; 
+    padding-bottom: 15px;
+}
+
+#inputLocation {
+    border:1px dotted grey; 
+    border-radius:5px; 
+    padding:5px;
+    font-size:12px;
+}
+
+#submitLocation {
+    border:none; 
+    border-radius:5px; 
+    padding:8px; 
+    margin-left:15px; 
+    font-size:12px;
+}

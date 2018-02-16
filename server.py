@@ -111,6 +111,10 @@ def get_current_weather(location):
         'is_day': is_daytime,
         'description': description,
         'temp': curr_temp,
+        # 'result_styles': {
+        #     'background': background_color,
+        #     'font_color':font_color
+        # }
     }
 
 
