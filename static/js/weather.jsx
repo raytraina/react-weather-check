@@ -42,7 +42,6 @@ class GetWeatherForm extends React.Component {
             height:200
           }
           icon = data.ui_attributes.icon;
-          // console.log(icon);
           isJacket = data.ui_attributes.is_jacket;
       });
 

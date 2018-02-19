@@ -59,33 +59,12 @@ def get_weather():
         # TODO: render invalid UI due to empty response
         return jsonify({})
 
-    # TODO - add calls to get valid colors
     # Make call to helper function to get the UI parameters to render
     ui_attributes = get_ui_attributes(
         weather_obj['description'].lower(),
         weather_obj['is_day'],
         weather_obj['temp'],
     )
-    print ui_attributes
-
-    # return {
-    #     'bg_color': get_bg_color(icon, is_day),
-    #     'font_color': get_font_color(is_day),
-    #     'icon': icon,
-    #     'is_jacket': is_jacket(icon, temp),
-    # }
-
-    # Render template with the data we collected on the frontend
-    # return render_template(
-    #     'results.html',
-    #     color=ui_attributes['bg_color'],
-    #     font=ui_attributes['font_color'],
-    #     icon=ui_attributes['icon'],
-    #     is_jacket=ui_attributes['is_jacket'],
-    #     location=location,
-    #     description=weather_obj['description'],
-    #     temp=weather_obj['temp'],
-    # )
 
     weather_ui = {
         'weather_obj':weather_obj,
@@ -123,11 +102,7 @@ def get_current_weather(location):
     return {
         'is_day': is_daytime,
         'description': description,
-        'temp': curr_temp,
-        # 'result_styles': {
-        #     'background': background_color,
-        #     'font_color':font_color
-        # }
+        'temp': curr_temp
     }
 
 
@@ -136,4 +111,4 @@ def get_current_weather(location):
 if __name__ == '__main__':
     # debug=True gives us error messages in the browser and also "reloads" our
     # web app if we change the code.
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=False, host='0.0.0.0', port=5000)
