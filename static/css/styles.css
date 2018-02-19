@@ -24,3 +24,7 @@ h1, h2 {
     margin-left:15px; 
     font-size:12px;
 }
+
+.page-header {
+    border-bottom: 2px solid #FB8B72;
+}

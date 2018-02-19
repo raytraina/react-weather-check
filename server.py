@@ -6,7 +6,7 @@ import requests
 from secrets import ACCUWEATHER_API_KEY
 
 # Import our weather UI helper functions
-# from weather_ui import get_ui_attributes
+from weather_ui import get_ui_attributes
 
 # Always keep your API Key secret
 API_KEY = ACCUWEATHER_API_KEY
@@ -38,8 +38,7 @@ def get_weather():
     payload = {'apikey':API_KEY, 'q':location, 'language':'en-us'}
 
     # Make request to Accuweather API and save response object
-    # See http://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/search
-    # for documentation.
+    # See documentation: http://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/search
     response = requests.get('http://dataservice.accuweather.com/locations/v1/search',
                                  params=payload)
 
@@ -60,12 +59,21 @@ def get_weather():
         # TODO: render invalid UI due to empty response
         return jsonify({})
 
+    # TODO - add calls to get valid colors
     # Make call to helper function to get the UI parameters to render
-    # ui_attributes = get_ui_attributes(
-    #     weather_obj['description'].lower(),
-    #     weather_obj['is_day'],
-    #     weather_obj['temp'],
-    # )
+    ui_attributes = get_ui_attributes(
+        weather_obj['description'].lower(),
+        weather_obj['is_day'],
+        weather_obj['temp'],
+    )
+    print ui_attributes
+
+    # return {
+    #     'bg_color': get_bg_color(icon, is_day),
+    #     'font_color': get_font_color(is_day),
+    #     'icon': icon,
+    #     'is_jacket': is_jacket(icon, temp),
+    # }
 
     # Render template with the data we collected on the frontend
     # return render_template(
@@ -79,7 +87,12 @@ def get_weather():
     #     temp=weather_obj['temp'],
     # )
 
-    return jsonify(weather_obj)#TODO#
+    weather_ui = {
+        'weather_obj':weather_obj,
+        'ui_attributes':ui_attributes
+    }
+
+    return jsonify(weather_ui)
 
 # Process weather data using the location key passed as a parameter from show_results()
 def get_current_weather(location):
